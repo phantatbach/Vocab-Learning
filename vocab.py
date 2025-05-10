@@ -108,7 +108,7 @@ class VocabPipeline:
             'Examples',
             'Translated_Example'
         ]
-        self.df.to_csv(self.output_file, columns=cols, index=False)
+        self.df.to_csv(self.output_file, columns=cols, index=False, encoding='utf-8-sig')
         logging.info(f"Output saved to {self.output_file}")
 
     def run(self):
