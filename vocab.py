@@ -106,7 +106,7 @@ class VocabPipeline:
             self.vocab_column,
             'Translated_Vocab',
             'Examples',
-            'Translated_Example'
+            'Translated_Examples'
         ]
         self.df.to_csv(self.output_file, columns=cols, index=False, encoding='utf-8-sig')
         logging.info(f"Output saved to {self.output_file}")
@@ -118,14 +118,17 @@ class VocabPipeline:
         self.save_csv()
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('input_file')
-    parser.add_argument('output_file')
-    parser.add_argument('--src_lang',     default='nl')
+    parser = argparse.ArgumentParser(
+        description="Generalised vocab-to-examples pipeline"
+    )
+    parser.add_argument('input_file',  help="Path to input CSV")
+    parser.add_argument('output_file', help="Path to output CSV")
+    parser.add_argument('--src_lang',     required=True, help='Specify your source language!')
     parser.add_argument('--dest_lang',    default='en')
     parser.add_argument('--prompt',       required=True,
-                        help="Use '{word}' placeholder")
-    parser.add_argument('--api_key',      required=True)
+                        help="Prompt template, use '{word}' as placeholder")
+    parser.add_argument('--api_key',      required=True,
+                        help="Your Gemini API key")
     parser.add_argument('--model_name',   default='gemini-1.5-flash')
     parser.add_argument('--vocab_column', default='Vocab')
     args = parser.parse_args()
