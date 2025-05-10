@@ -9,7 +9,7 @@ A lightweight, end-to-end Python pipeline that takes a CSV of source-language vo
 - **Vocab**  
 - **Translated_Vocab**  
 - **Examples**  
-- **Translated_Example**  
+- **Translated_Examples**  
 
 ---
 
