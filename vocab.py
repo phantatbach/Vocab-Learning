@@ -38,7 +38,7 @@ class VocabPipeline:
     def load_csv(self):
         self.df = pd.read_csv(self.input_file)
         # Ensure all four cols exist
-        for col in ['Examples', 'Translated_Vocab', 'Translated_Example']:
+        for col in ['Examples', 'Translated_Vocab', 'Translated_Examples']:
             if col not in self.df.columns:
                 self.df[col] = pd.NA
 
@@ -87,19 +87,19 @@ class VocabPipeline:
 
         # Translate Examples
         for idx, ex in self.df['Examples'].items():
-            if pd.notna(self.df.at[idx, 'Translated_Example']):
+            if pd.notna(self.df.at[idx, 'Translated_Examples']):
                 continue
             if not isinstance(ex, str) or not ex.strip():
-                self.df.at[idx, 'Translated_Example'] = pd.NA
+                self.df.at[idx, 'Translated_Examples'] = pd.NA
                 continue
             try:
-                self.df.at[idx, 'Translated_Example'] = \
+                self.df.at[idx, 'Translated_Examples'] = \
                     self.translator.translate(ex,
                                               src=self.src_lang,
                                               dest=self.dest_lang).text
             except Exception as e:
                 logging.error(f"Translate example fail '{ex}': {e}")
-                self.df.at[idx, 'Translated_Example'] = pd.NA
+                self.df.at[idx, 'Translated_Examples'] = pd.NA
 
     def save_csv(self):
         cols = [
