@@ -1,5 +1,3 @@
-Tuyệt — dưới đây là phiên bản **cập nhật** của README, có thêm phần **clustering vocab** bằng embedding, phù hợp với pipeline của bạn. Mình giữ nguyên phong cách rõ ràng, chuyên nghiệp, và không rườm rà.
-
 ---
 
 # 📚 Vocab-Learning
