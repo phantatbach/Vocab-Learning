@@ -38,7 +38,7 @@ class VocabPipeline:
     def load_csv(self):
         self.df = pd.read_csv(self.input_file)
         # Ensure all four cols exist
-        for col in ['Examples', 'Translated_Vocab', 'Translated_Examples']:
+        for col in ['Examples', 'Translated_Vocab', 'Translated_Exampless']:
             if col not in self.df.columns:
                 self.df[col] = pd.NA
 
